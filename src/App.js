@@ -1,11 +1,10 @@
-import { Fragment } from 'react';
-
 import Header from './Components/Header/Header';
 import Formulario from './Components/Formulario/Formulario';
+import CategoriasProvider from './Context/CategoriasContext';
 
 function App() {
   return (
-    <Fragment>
+    <CategoriasProvider>
       <Header titulo='Drinks and Cocktails Recipes Searcher' />
 
       <div className='container mt-5'>
@@ -13,7 +12,7 @@ function App() {
           <Formulario />
         </div>
       </div>
-    </Fragment>
+    </CategoriasProvider>
   );
 }
 
