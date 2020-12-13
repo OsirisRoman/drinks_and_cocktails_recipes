@@ -12,19 +12,17 @@ const CategoriasProvider = (props) => {
 
   //
   useEffect(() => {
-    const obtenerCategorias = async () => {
+    const obtainCategories = async () => {
       const url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
 
       const resultado = await axios.get(url);
 
-      let listado = [];
-
-      resultado.data.drinks.map((categoria) => {
-        listado.push(categoria.strCategory);
+      const categoriesList = resultado.data.drinks.map((categoria) => {
+        return categoria.strCategory;
       });
-      setCategorias(listado);
+      setCategorias(categoriesList);
     };
-    obtenerCategorias();
+    obtainCategories();
   }, []);
 
   return (

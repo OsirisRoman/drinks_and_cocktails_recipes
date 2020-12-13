@@ -4,10 +4,13 @@ import { CategoriasContext } from '../../Context/CategoriasContext';
 import { RecetasContext } from '../../Context/RecetasContex';
 
 const Formulario = () => {
-  const [busqueda, setBusqueda] = useState({});
+  const [busqueda, setBusqueda] = useState({
+    name: '',
+    category: '',
+  });
   const { categorias } = useContext(CategoriasContext);
 
-  const { setSearching } = useContext(RecetasContext);
+  const { setSearching, setConsult } = useContext(RecetasContext);
 
   //
   const obtenerParametros = (e) => {
@@ -21,6 +24,7 @@ const Formulario = () => {
   const buscarRecetas = (e) => {
     e.preventDefault();
     setSearching(busqueda);
+    setConsult(true);
   };
 
   return (
