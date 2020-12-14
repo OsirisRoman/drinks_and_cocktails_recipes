@@ -1,5 +1,6 @@
 import Header from './Components/Header/Header';
 import Formulario from './Components/Formulario/Formulario';
+import RecipesList from './Components/RecipesList/RecipesList';
 
 import CategoriasProvider from './Context/CategoriasContext';
 import RecetasProvider from './Context/RecetasContex';
@@ -14,6 +15,7 @@ function App() {
           <div className='row'>
             <Formulario />
           </div>
+          <RecipesList />
         </div>
       </RecetasProvider>
     </CategoriasProvider>
