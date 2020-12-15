@@ -4,19 +4,22 @@ import RecipesList from './Components/RecipesList/RecipesList';
 
 import CategoriasProvider from './Context/CategoriasContext';
 import RecetasProvider from './Context/RecetasContex';
+import ModalProvider from './Context/ModalContext';
 
 function App() {
   return (
     <CategoriasProvider>
       <RecetasProvider>
-        <Header titulo='Drinks and Cocktails Recipes Searcher' />
+        <ModalProvider>
+          <Header titulo='Drinks and Cocktails Recipes Searcher' />
 
-        <div className='container mt-5'>
-          <div className='row'>
-            <Formulario />
+          <div className='container mt-5'>
+            <div className='row'>
+              <Formulario />
+            </div>
+            <RecipesList />
           </div>
-          <RecipesList />
-        </div>
+        </ModalProvider>
       </RecetasProvider>
     </CategoriasProvider>
   );

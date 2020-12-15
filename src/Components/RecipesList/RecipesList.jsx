@@ -5,15 +5,16 @@ import Recipe from '../Recipe/Recipe';
 import { RecetasContext } from '../../Context/RecetasContex';
 
 const RecipesList = () => {
-  const { recipes } = useContext(RecetasContext);
+  const { drinksList } = useContext(RecetasContext);
   return (
     <div className='row mt-5'>
-      {recipes.map((recipe) => {
+      {drinksList.map((drink) => {
         return (
           <Recipe
-            key={recipe.idDrink}
-            recipe={recipe.strDrink}
-            image={recipe.strDrinkThumb}
+            key={drink.idDrink}
+            drink={drink.strDrink}
+            image={drink.strDrinkThumb}
+            drinkId={drink.idDrink}
           />
         );
       })}

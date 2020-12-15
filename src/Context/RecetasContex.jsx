@@ -6,7 +6,8 @@ export const RecetasContext = createContext();
 
 const RecetasProvider = (props) => {
   //Recipes State
-  const [recipes, setRecipes] = useState([]);
+  /* const [recipes, setRecipes] = useState([]); */
+  const [drinksList, setDrinksList] = useState([]);
   //Searching State
   const [searching, setSearching] = useState({
     name: '',
@@ -18,13 +19,13 @@ const RecetasProvider = (props) => {
   useEffect(() => {
     if (searching.name === '' || searching.category === '') return;
 
-    const getRecipes = async () => {
+    const getDrinksList = async () => {
       const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${searching.name}&c=${searching.category}`;
-      const resultado = await axios.get(url);
-      setRecipes(resultado.data.drinks);
+      const response = await axios.get(url);
+      setDrinksList(response.data.drinks);
     };
     if (consult) {
-      getRecipes();
+      getDrinksList();
       setConsult(false);
     }
   }, [searching, consult]);
@@ -32,7 +33,7 @@ const RecetasProvider = (props) => {
   return (
     <RecetasContext.Provider
       value={{
-        recipes,
+        drinksList,
         setSearching,
         setConsult,
       }}>
