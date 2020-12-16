@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 4, 3),
     maxHeight: '500px',
     overflow: 'auto',
-    textAlign: 'center',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
@@ -24,7 +23,13 @@ const useStyles = makeStyles((theme) => ({
 
 const Recipe = ({ drink, image, drinkId }) => {
   //Get context values
-  const { setSelectedDrinkId, recipe, setRecipe } = useContext(ModalContext);
+  const {
+    setSelectedDrinkId,
+    recipe,
+    setRecipe,
+    ingredientsList,
+    setIngredientsList,
+  } = useContext(ModalContext);
 
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -36,15 +41,6 @@ const Recipe = ({ drink, image, drinkId }) => {
   const handleClose = () => {
     setOpen(false);
   };
-
-  const body = (
-    <div className={classes.paper}>
-      <h2 id='simple-modal-title'>{recipe.strDrink}</h2>
-      <h3>Instrucciones</h3>
-      <p id='simple-modal-description'>{recipe.strInstructions}</p>
-      <img className='img-fluid' src={recipe.strDrinkThumb} />
-    </div>
-  );
 
   return (
     <div className='col-md-4 mb-3'>
@@ -61,17 +57,35 @@ const Recipe = ({ drink, image, drinkId }) => {
             }}>
             See Recipe
           </button>
-          <Modal
-            open={open}
-            onClose={() => {
-              handleClose();
-              setSelectedDrinkId(null);
-              setRecipe({});
-            }}
-            aria-labelledby='simple-modal-title'
-            aria-describedby='simple-modal-description'>
-            {body}
-          </Modal>
+          {open ? (
+            <Modal
+              open={open}
+              onClose={() => {
+                handleClose();
+                setSelectedDrinkId(null);
+                setRecipe({});
+                setIngredientsList([]);
+              }}
+              aria-labelledby='simple-modal-title'
+              aria-describedby='simple-modal-description'>
+              <div className={classes.paper}>
+                <h2 id='simple-modal-title'>{drink}</h2>
+                <h3>Ingredients</h3>
+                <ul>
+                  {ingredientsList.map((ingredient, index) => {
+                    return <li key={index}>{ingredient}</li>;
+                  })}
+                </ul>
+                <h3>Instructions</h3>
+                <p id='simple-modal-description'>{recipe.strInstructions}</p>
+                <img
+                  className='img-fluid'
+                  src={image}
+                  alt={`imagen de ${drink}`}
+                />
+              </div>
+            </Modal>
+          ) : null}
         </div>
       </div>
     </div>

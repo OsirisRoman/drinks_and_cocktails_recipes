@@ -10,12 +10,26 @@ const ModalProvider = (props) => {
   const [selectedDrinkId, setSelectedDrinkId] = useState(null);
   //State that stores the recipe
   const [recipe, setRecipe] = useState({});
+  //State that stores the Ingredients recipe
+  const [ingredientsList, setIngredientsList] = useState([]);
 
   useEffect(() => {
     const getRecipe = async () => {
       const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${selectedDrinkId}`;
       const response = await axios.get(url);
       setRecipe(response.data.drinks[0]);
+      let ingredients = [];
+      //extract all ingredients for the selected recipe
+      for (let i = 0; i < 16; i++) {
+        if (response.data.drinks[0][`strIngredient${i}`]) {
+          ingredients.push(
+            response.data.drinks[0][`strMeasure${i}`] +
+              ' ' +
+              response.data.drinks[0][`strIngredient${i}`]
+          );
+        }
+      }
+      setIngredientsList(ingredients);
     };
     if (selectedDrinkId) {
       getRecipe();
@@ -23,7 +37,14 @@ const ModalProvider = (props) => {
   }, [selectedDrinkId]);
 
   return (
-    <ModalContext.Provider value={{ setSelectedDrinkId, recipe, setRecipe }}>
+    <ModalContext.Provider
+      value={{
+        setSelectedDrinkId,
+        recipe,
+        setRecipe,
+        ingredientsList,
+        setIngredientsList,
+      }}>
       {props.children}
     </ModalContext.Provider>
   );
