@@ -23,7 +23,7 @@ const ModalProvider = (props) => {
   }, [selectedDrinkId]);
 
   return (
-    <ModalContext.Provider value={{ setSelectedDrinkId }}>
+    <ModalContext.Provider value={{ setSelectedDrinkId, recipe, setRecipe }}>
       {props.children}
     </ModalContext.Provider>
   );

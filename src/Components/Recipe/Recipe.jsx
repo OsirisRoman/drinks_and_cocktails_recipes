@@ -5,21 +5,6 @@ import { ModalContext } from '../../Context/ModalContext';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
-
-function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
-
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
-  };
-}
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     position: 'absolute',
@@ -28,16 +13,20 @@ const useStyles = makeStyles((theme) => ({
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
+    maxHeight: '500px',
+    overflow: 'auto',
+    textAlign: 'center',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
   },
 }));
 
 const Recipe = ({ drink, image, drinkId }) => {
   //Get context values
-  const { setSelectedDrinkId } = useContext(ModalContext);
+  const { setSelectedDrinkId, recipe, setRecipe } = useContext(ModalContext);
 
   const classes = useStyles();
-  // getModalStyle is not a pure function, we roll the style only on the first render
-  const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
 
   const handleOpen = () => {
@@ -49,9 +38,11 @@ const Recipe = ({ drink, image, drinkId }) => {
   };
 
   const body = (
-    <div style={modalStyle} className={classes.paper}>
-      <h2 id='simple-modal-title'>Este debería ser el nombre de la bebida</h2>
-      <p id='simple-modal-description'>Aquí iria la receta de la Bebida</p>
+    <div className={classes.paper}>
+      <h2 id='simple-modal-title'>{recipe.strDrink}</h2>
+      <h3>Instrucciones</h3>
+      <p id='simple-modal-description'>{recipe.strInstructions}</p>
+      <img className='img-fluid' src={recipe.strDrinkThumb} />
     </div>
   );
 
@@ -75,6 +66,7 @@ const Recipe = ({ drink, image, drinkId }) => {
             onClose={() => {
               handleClose();
               setSelectedDrinkId(null);
+              setRecipe({});
             }}
             aria-labelledby='simple-modal-title'
             aria-describedby='simple-modal-description'>
