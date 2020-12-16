@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 
 import { ModalContext } from '../../Context/ModalContext';
 
@@ -92,6 +93,12 @@ const Recipe = ({ drink, image, drinkId }) => {
       </div>
     </div>
   );
+};
+
+Recipe.propTypes = {
+  drink: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  drinkId: PropTypes.string.isRequired,
 };
 
 export default Recipe;
