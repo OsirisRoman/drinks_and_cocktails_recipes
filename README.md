@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# Drinks and Cocktails Recipes
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+_A web application that allows users to find drink and cocktail recipes. This application was build on top of ReactJS making use of several react hooks and ContextAPI. This web app consumes all the data from an external API that can be found at https://www.thecocktaildb.com/ 🎉._
 
-## Available Scripts
+## Starting 🚀
 
-In the project directory, you can run:
+_The following instructions will allow you to obtain an entire copy of the project to developing and testing purposes._
 
-### `yarn start`
+See the **Installation** section to know how to install the requirements.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Pre-requisites 📋
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Node.js
 
-### `yarn test`
+| Version | Supported?         |
+| ------- | ------------------ |
+| 12.18.3 | :white_check_mark: |
+| <=12.0  | :x:                |
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### React
 
-### `yarn build`
+| Version   | Supported?         |
+| --------- | ------------------ |
+| >=16.13.1 | :white_check_mark: |
+| <=16      | :x:                |
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Installation 🔧
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+_After you install the **Pre-requisites** correctly you should clone this repository_
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+$ git clone https://github.com/OsirisRoman/drinks_and_cocktails_recipes.git ~/destinationFolder
+```
 
-### `yarn eject`
+_Go to your destinationFolder/drinks_and_cocktails_recipes_
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+$ cd destinationFolder/drinks_and_cocktails_recipes
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+_Install the necessary dependencies to launch the server_
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+$ yarn install
+$ yarn start
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Author ✒️
 
-## Learn More
+- **Osiris Román** - [OsirisRoman](https://github.com/OsirisRoman)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Result :tada:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+You can see the live result of this repository in the following link:
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Drinks-and-Cocktails-Recipes: https://osirisroman-drink-and-cocktails-recipes.netlify.app/

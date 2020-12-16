@@ -12,8 +12,15 @@ function App() {
       <RecetasProvider>
         <ModalProvider>
           <Header titulo='Drinks and Cocktails Recipes Searcher' />
-
-          <div className='container mt-5'>
+          <h4
+            className='container w-75 mt-5 mb-5 text-center bg-white p-3'
+            style={{ borderRadius: '20px' }}>
+            A web application that allows to find drink and cocktail recipes.
+            This application was build on top of ReactJS making use of several
+            react hooks and ContextAPI. This web app consumes all the data from
+            an external API 🎉
+          </h4>
+          <div className='container mt-4'>
             <div className='row'>
               <Formulario />
             </div>
