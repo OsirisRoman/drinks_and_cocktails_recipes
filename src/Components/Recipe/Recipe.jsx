@@ -25,8 +25,8 @@ const Recipe = ({ drink, image, drinkId }) => {
   //Get context values
   const {
     setSelectedDrinkId,
-    recipe,
-    setRecipe,
+    recipeInstructions,
+    setRecipeInstructions,
     ingredientsList,
     setIngredientsList,
   } = useContext(ModalContext);
@@ -53,7 +53,9 @@ const Recipe = ({ drink, image, drinkId }) => {
             className='btn btn-block btn-primary'
             onClick={() => {
               setSelectedDrinkId(drinkId);
-              handleOpen();
+              setTimeout(() => {
+                handleOpen();
+              }, 300);
             }}>
             See Recipe
           </button>
@@ -63,7 +65,7 @@ const Recipe = ({ drink, image, drinkId }) => {
               onClose={() => {
                 handleClose();
                 setSelectedDrinkId(null);
-                setRecipe({});
+                setRecipeInstructions('');
                 setIngredientsList([]);
               }}
               aria-labelledby='simple-modal-title'
@@ -77,7 +79,7 @@ const Recipe = ({ drink, image, drinkId }) => {
                   })}
                 </ul>
                 <h3>Instructions</h3>
-                <p id='simple-modal-description'>{recipe.strInstructions}</p>
+                <p id='simple-modal-description'>{recipeInstructions}</p>
                 <img
                   className='img-fluid'
                   src={image}
